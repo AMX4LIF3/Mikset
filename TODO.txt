@@ -193,8 +193,8 @@ logs: // ik kinda late to the party but hey shut up
 		that removes any hierarchys and makes the model into 1 mesh, issue is that it breaks skinned/animated models
 	
 	### update 06-7-26: 
-		added IGN rotation for shadows (Interleaved Gradient Noise rotation) and yes i did use AI 
-		but it looks good for now, does fall short a little on thin stuff but it works and looks exceptionally 
+		added IGN rotation for shadows (Interleaved Gradient Noise rotation) 
+		it looks good for now, does fall short a little on thin stuff but it works and looks exceptionally 
 		okay.
 
 		
