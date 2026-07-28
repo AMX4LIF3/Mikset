@@ -288,19 +288,18 @@ float4 PMain(PS_INPUT input) : SV_TARGET
     float shadowDepth = shadowMap.Sample(shadowSampler, shadowUV).r;
     float shadowFactor = 1.0f;
     
-    // thanks random guy on an old ass forum for this
+    
     if (!outsideShadowMap)
     {
         float sum = 0.0f;
-        float2 texelSize = float2(1.0f / 1024.0f, 1.0f / 1024.0f);
+        float2 texelSize = float2(1.0f / 1024.0f, 1.0f / 1024.0f); // couldn't care less if this is hardcoded btw
         
         float blurRadius = 0.5f;
 
-        // Calculate a fast pseudo-random angle based on screen position
+        // fast pseudo-random angle based on screen position
         float3 magic = float3(0.06711056f, 0.00583715f, 52.9829189f);
-        float noise = frac(magic.z * frac(dot(input.pos.xy, magic.xy))); // Interleaved Gradient Noise
+        float noise = frac(magic.z * frac(dot(input.pos.xy, magic.xy))); // interleaved gradient noise function
         
-        // Create a fast 2D rotation matrix from the noise angle
         float s = sin(noise * 6.283185f);
         float c = cos(noise * 6.283185f);
         float2x2 rotationMatrix = float2x2(c, -s, s, c);
@@ -310,14 +309,9 @@ float4 PMain(PS_INPUT input) : SV_TARGET
         {
             for (int y = -1; y <= 1; ++y)
             {
-                // Standard offset
                 float2 offset = float2(x, y) * texelSize * blurRadius;
-                
-                // Rotate the offset using our screen noise matrix
                 offset = mul(offset, rotationMatrix);
-                
                 float2 OffsetUV = shadowUV + offset;
-                
                 float shadowDepth = shadowMap.Sample(shadowSampler, OffsetUV).r;
                 sum += (currentDepth <= shadowDepth) ? 2.0f : 0.0f;
             }
