@@ -353,8 +353,6 @@ float4 PMain(PS_INPUT input) : SV_TARGET
     color += emissive * EmissiveFactor;
 */
 float3 emissive = texEmissive.Sample(objSampler, input.uv).rgb;
-
-// 2. Add it directly to the accumulated color, scaled by your material constant multiplier
 color += emissive * EmissiveFactor;
    
 // honestly looks bad keep it off
