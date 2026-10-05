@@ -133,7 +133,7 @@ bool CubeMap::Init(Core& core, const std::wstring& path) {
 		return false;
 	}
 
-	hr = shader.VSCompileFromFile(core, core.GetDevice(), "C:/Users/User/Desktop/C++/3d shit/Mikset/Renderer/Graphics/shaders/skybox.hlsl", "SkyboxShader");
+	hr = shader.VSCompileFromFile(core, core.GetDevice(), "Renderer/Graphics/shaders/skybox.hlsl", "SkyboxShader");
 	if (FAILED(hr)) {
 		MessageBoxA(NULL, "Failed to Compile a cubemap's vertex shader.\nmake sure the path and shader are valid..", "VSCompileFromFile() Failed!", MB_OK | MB_ICONERROR);
 		return false;
@@ -150,7 +150,7 @@ bool CubeMap::Init(Core& core, const std::wstring& path) {
 		return false;
 	}
 	
-	hr = shader.PSCompileFromFile(core, core.GetDevice(), "C:/Users/User/Desktop/C++/3d shit/Mikset/Renderer/Graphics/shaders/skybox.hlsl", "SkyboxShader");
+	hr = shader.PSCompileFromFile(core, core.GetDevice(), "Renderer/Graphics/shaders/skybox.hlsl", "SkyboxShader");
 	if (FAILED(hr)) {
 		MessageBoxA(NULL, "Failed to Compile a cubemap's pixel shader.\nmake sure the path and shader are valid..", "PSCompileFromFile() Failed!", MB_OK | MB_ICONERROR);
 		return false;
